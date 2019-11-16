@@ -21,7 +21,8 @@ function copyTime() {
     time_seg -= time_ms
     var time = formatTime(time_hours) + ":" + formatTime(time_minutes) + ":" + formatTime(time_seg) + "." + time_ms.toFixed(9).toString().split(".")[1];
     setClipboard(time)
-    mp.osd_message(text, 3);    
+    var text = "Copied to Clipboard: " + time;
+    mp.osd_message(text);    
 }
 
 mp.add_key_binding("Ctrl+Alt+c", "copyTime", copyTime);
