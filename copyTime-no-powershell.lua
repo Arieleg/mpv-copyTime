@@ -1,5 +1,4 @@
 require 'mp'
-require 'os'
 
 local function set_clipboard(text)
     -- Change path to companion script below
