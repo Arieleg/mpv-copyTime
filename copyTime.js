@@ -19,9 +19,9 @@ function copyTime() {
     var time_minutes = time_pos / 60;
     var time_ms = time_seg - Math.floor(time_seg);
     time_seg -= time_ms
-    var time = formatTime(time_hours) + ":" + formatTime(time_minutes) + ":" + formatTime(time_seg) + "." + time_ms.toFixed(9).toString().split(".")[1];
+    var time = formatTime(time_hours) + ":" + formatTime(time_minutes) + ":" + formatTime(time_seg) + "." + time_ms.toFixed(3).toString().split(".")[1];
     setClipboard(time)
     mp.osd_message("Copied to Clipboard: " + time);    
 }
 
-mp.add_key_binding("Ctrl+Alt+c", "copyTime", copyTime);
+mp.add_key_binding("Ctrl+c", "copyTime", copyTime);
