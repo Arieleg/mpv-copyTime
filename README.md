@@ -9,4 +9,7 @@ By default, the script is bind to "Ctrl + Alt + c"
 
 # Installation
 
-Put the script ("copyTime.js" or "copyTime.lua", the one you prefere) in your scripts folder (usually "~/.config/mpv/scripts/" or "%APPDATA%\mpv\scripts" in Windows). For GNU/Linux use copyTime-no-powershell.lua, that uses bash + xclip instead of Powershell, thanks maxigaz.
+Put the script ("copyTime.js" or "copyTime.lua", the one you prefere) in your scripts folder (usually "~/.config/mpv/scripts/" or "%APPDATA%\mpv\scripts" in Windows). 
+
+
+For GNU/Linux use copyTime-no-powershell.lua, that uses bash + xclip instead of Powershell, thanks maxigaz.
