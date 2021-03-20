@@ -21,3 +21,6 @@ For GNU/Linux use copyTime-xclip.lua, that uses xclip instead of Powershell, tha
 Put copyTime-xclip.lua and copyTime-xclip.sh in your scripts folder (usually "~/.config/mpv/scripts/"). 
 
 The script needs xclip to work.
+
+# Screenshot
+![ss1](https://user-images.githubusercontent.com/40000640/111867156-02f68a00-8951-11eb-84a8-c78616c68aa3.PNG)
