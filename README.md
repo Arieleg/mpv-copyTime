@@ -10,7 +10,7 @@ By default, the script is bind to "Ctrl + c"
 ## Windows
 For Windows use copyTime.js or copyTime.lua, the one you prefere.
 
-Put the selected script in your scripts folder (usually "%APPDATA%\mpv\scripts").
+* Put the selected script in your scripts folder (usually "%APPDATA%\mpv\scripts").
 
 The script needs PowerShell to work.
 
@@ -18,7 +18,9 @@ The script needs PowerShell to work.
 
 For GNU/Linux use copyTime-xclip.lua, that uses xclip instead of Powershell, thanks maxigaz.
 
-Put copyTime-xclip.lua and copyTime-xclip.sh in your scripts folder (usually "~/.config/mpv/scripts/"). 
+* Put copyTime-xclip.lua and copyTime-xclip.sh in your scripts folder (usually "~/.config/mpv/scripts/"). 
+
+* Modify copyTime-xclip.lua to set the correct path to copyTime-xclip.sh.
 
 The script needs xclip to work.
 
