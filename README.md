@@ -22,6 +22,8 @@ For GNU/Linux use copyTime-xclip.lua, that uses xclip instead of Powershell, tha
 
 * Modify copyTime-xclip.lua to set the correct path to copyTime-xclip.sh.
 
+* Give execute permissions to copyTime-xclip.sh (chmod +x copyTime-xclip.sh).
+
 The script needs xclip to work.
 
 # Screenshot
