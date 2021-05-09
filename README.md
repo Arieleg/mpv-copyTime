@@ -14,10 +14,10 @@ For Windows use `copyTime.js` or `copyTime.lua`, the one you prefer.
 
 The script needs PowerShell to work.
 
-## GNU/Linux
+## GNU/Linux + MacOS
 
-For GNU/Linux use `copyTime.lua`, which supports Windows and GNU/Linux.
-Powershell is used on Windows and `xclip` is used on GNU/Linux.
+For use `copyTime.lua`, which supports Windows, GNU/Linux and MacOS.
+`Powershell` is used on Windows, `xclip` is used on GNU/Linux and `pbcopy` is used on MacOS to access the system clipboard.
 
 * Put `copyTime.lua` in your scripts folder (usually `"~/.config/mpv/scripts/"`).
 

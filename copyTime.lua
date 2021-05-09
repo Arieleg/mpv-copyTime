@@ -32,6 +32,11 @@ local function set_clipboard(text)
     elseif platform == "Windows" then
         mp.commandv("run", "powershell", "set-clipboard", text)
 
+    elseif platform == "MacOS" then
+        local pipe = io.popen("pbcopy", "w")
+        pipe:write(text)
+        pipe:close()
+
     else
         mp.msg.error("unknown platform " .. platform)
     end
