@@ -1,8 +1,13 @@
 require 'mp'
 
+-- Copy the current time of the video to clipboard.
+-- https://github.com/Arieleg/mpv-copyTime
+
+
 local function set_clipboard(text)
-    -- Change path to copyTime-xclip.sh, example: "/home/myuser/.config/mpv/scripts/copyTime-xclip.sh"
-    mp.commandv("run", "/path/to/copyTime-xclip.sh", text);
+    local pipe = io.popen("xclip -silent -in -selection clipboard", "w")
+    pipe:write(text)
+    pipe:close()
 end
 
 local function copyTime()
@@ -13,7 +18,7 @@ local function copyTime()
     local time_hours = math.floor(time_pos / 3600)
     time_pos = time_pos - (time_hours * 3600)
     local time_minutes = time_pos/60
-    time_seg,time_ms=string.format("%.03f", time_seg):match"([^.]*).(.*)"
+    time_seg, time_ms=string.format("%.03f", time_seg):match"([^.]*).(.*)"
     time = string.format("%02d:%02d:%02d.%s", time_hours, time_minutes, time_seg, time_ms)
     mp.osd_message(string.format("Copied to Clipboard: %s", time))
     set_clipboard(time)
