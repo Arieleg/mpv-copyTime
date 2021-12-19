@@ -16,7 +16,7 @@ local function platform_type()
 end
 
 local function command_exists(cmd)
-    local pipe = io.popen("type " .. cmd .. " > /dev/null 2> /dev/null; echo -n $?", "r")
+    local pipe = io.popen("type " .. cmd .. " > /dev/null 2> /dev/null; printf \"$?\"", "r")
     return pipe:read() == "0"
 end
 
