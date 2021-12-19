@@ -5,18 +5,17 @@ Get the current time of the video and copy it to the clipboard with the format H
 
 By default, the script is bound to "Ctrl + c"
 
+External commands are used to access the clipboard:
+- `Powershell` is used on Windows
+- `xclip` is used on Linux + X11
+- `wl-copy` or `xclip` is used on Linux + Wayland
+- `pbcopy` is used on MacOS
+
 # Installation
 
-## Windows
-* Put the copyTime.lua script in your scripts folder (usually `"%APPDATA%\mpv\scripts"`).
-
-The script needs PowerShell to work.
-
-## GNU/Linux + MacOS
-
-`Powershell` is used on Windows, `xclip` is used on GNU/Linux and `pbcopy` is used on MacOS to access the system clipboard.
-
-* Put `copyTime.lua` in your scripts folder (usually `"~/.config/mpv/scripts/"`).
+Put the `copy_time.lua` script in your scripts folder
+- usually `"%APPDATA%\mpv\scripts"` on Windows
+- usually `"~/.config/mpv/scripts/"` on Linux and Mac
 
 # Screenshot
 ![ss1](https://user-images.githubusercontent.com/40000640/111867156-02f68a00-8951-11eb-84a8-c78616c68aa3.PNG)
