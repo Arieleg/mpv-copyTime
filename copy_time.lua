@@ -42,11 +42,15 @@ local function set_clipboard(text)
             pipe:write(text)
             pipe:close()
             found_any = true
+        end
 
         if command_exists("wl-copy") then
             -- linux + Wayland
-            mp.commandv("wl-copy", text)
+            local pipe = io.popen("wl-copy", "w")
+            pipe:write(text)
+            pipe:close()
             found_any = true
+        end
 
         if command_exists("pbcopy") then
             -- MacOS
@@ -54,6 +58,7 @@ local function set_clipboard(text)
             pipe:write(text)
             pipe:close()
             found_any = true
+        end
 
         if not found_any then
             mp.msg.error("no supported clipboard command found")
