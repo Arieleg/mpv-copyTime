@@ -13,7 +13,8 @@ Put the script `copyTime.lua` in your scripts folder, usually in:
 
 To work, the script needs:
 * Windows: `Powershell`.
-* Linux: `xclip` or `wl-copy`.
+* Linux/X11: `xclip`.
+* Linux/Wayland : `xclip` or `wl-clipboard`.
 * MacOS: `pbcopy`.
 
 # Screenshot
