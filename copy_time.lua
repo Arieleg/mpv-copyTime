@@ -5,10 +5,9 @@ require 'mp.msg'
 
 
 local function platform_type()
-    -- based on https://stackoverflow.com/a/30960054
-    -- cannot distinguish between Linux and MacOS reliably
-    local BinaryFormat = package.cpath:match("%p[\\|/]?%p(%a+)")
-    if BinaryFormat == "dll" then
+    local utils = require 'mp.utils'
+    local workdir = utils.to_string(mp.get_property_native("working-directory"))
+    if string.find(workdir, "\\") then
         return "windows"
     else
         return "unix"
@@ -17,7 +16,9 @@ end
 
 local function command_exists(cmd)
     local pipe = io.popen("type " .. cmd .. " > /dev/null 2> /dev/null; printf \"$?\"", "r")
-    return pipe:read() == "0"
+    exists = pipe:read() == "0"
+    pipe:close()
+    return exists
 end
 
 local function divmod(a, b)
@@ -61,12 +62,12 @@ local function set_clipboard(text)
         end
 
         if not found_any then
-            mp.msg.error("no supported clipboard command found")
+            mp.msg.error("No supported clipboard command found")
         end
         return found_any
 
     else
-        mp.msg.error("unknown platform " .. platform)
+        mp.msg.error("Unknown platform " .. platform)
         return false
     end
 end
@@ -87,4 +88,3 @@ local function copy_time()
 end
 
 mp.add_key_binding("Ctrl+c", "copy_time", copy_time)
-
