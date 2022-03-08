@@ -15,7 +15,7 @@ To work, the script needs:
 * Windows: `Powershell`.
 * Linux/X11: `xclip`.
 * Linux/Wayland : `xclip` or `wl-clipboard`.
-* MacOS: `pbcopy`.
+* MacOS: `pbcopy` (not tested). 
 
 # Screenshot
 ![ss1](https://user-images.githubusercontent.com/40000640/111867156-02f68a00-8951-11eb-84a8-c78616c68aa3.PNG)
