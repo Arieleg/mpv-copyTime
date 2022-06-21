@@ -36,10 +36,6 @@ local function get_clipboard_cmd()
     end
 end
 
-local function divmod(a, b)
-    return a / b, a % b
-end
-
 local function set_clipboard(text) 
     if platform == WINDOWS then
         mp.commandv("run", "powershell", "set-clipboard", text)
@@ -57,11 +53,11 @@ end
 
 local function copyTime()
     local time_pos = mp.get_property_number("time-pos")
-    local minutes, remainder = divmod(time_pos, 60)
-    local hours, minutes = divmod(minutes, 60)
-    local seconds = math.floor(remainder)
-    local milliseconds = math.floor((remainder - seconds) * 1000)
-    local time = string.format("%02d:%02d:%02d.%03d", hours, minutes, seconds, milliseconds)
+    local hours = time_pos / 3600
+    local minutes = (time_pos / 60) % 60
+    local seconds = time_pos % 60
+    local milliseconds = (time_pos % 1) * 1000
+    local time = string.format("%02d:%02d:%02d.%03d", math.floor(hours), math.floor(minutes), math.floor(seconds), milliseconds)
     if set_clipboard(time) then
         mp.osd_message(string.format("Copied to Clipboard: %s", time))
     else
