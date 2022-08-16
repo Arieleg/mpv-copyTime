@@ -23,10 +23,17 @@ local function command_exists(cmd)
     return exists
 end
 
+local function display_servers(cmd)
+    local pipe = io.popen("echo $XDG_SESSION_TYPE")
+    exists = pipe:read() == cmd
+    pipe:close()
+    return exists
+end
+
 local function get_clipboard_cmd()
-    if command_exists("xclip") then
+    if display_servers("x11") and command_exists("xclip") then
         return "xclip -silent -in -selection clipboard"
-    elseif command_exists("wl-copy") then
+    elseif display_servers("wayland") and command_exists("wl-copy") then
         return "wl-copy"
     elseif command_exists("pbcopy") then
         return "pbcopy"
@@ -40,7 +47,7 @@ local function divmod(a, b)
     return a / b, a % b
 end
 
-local function set_clipboard(text) 
+local function set_clipboard(text)
     if platform == WINDOWS then
         mp.commandv("run", "powershell", "set-clipboard", text)
         return true
