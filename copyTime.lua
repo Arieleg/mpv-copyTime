@@ -61,7 +61,7 @@ local function copyTime()
     local hours, minutes = divmod(minutes, 60)
     local seconds = math.floor(remainder)
     local milliseconds = math.floor((remainder - seconds) * 1000)
-    local time = string.format("%02d:%02d:%02d.%03d", hours, minutes, seconds, milliseconds)
+    local time = string.format("%02d:%02d:%02d.%03d", math.floor(hours), math.floor(minutes), seconds, milliseconds)
     if set_clipboard(time) then
         mp.osd_message(string.format("Copied to Clipboard: %s", time))
     else
