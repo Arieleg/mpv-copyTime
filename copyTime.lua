@@ -20,19 +20,13 @@ local function command_exists(cmd)
     local pipe = io.popen("type " .. cmd .. " > /dev/null 2> /dev/null; printf \"$?\"", "r")
     exists = pipe:read() == "0"
     pipe:close()
-
-    -- show error if command not exists
-    if not exists and cmd == "pbcopy" then
-        mp.msg.error(cmd .. " package not found! please install it (MacOS-only).")
-    elseif not exists then
-        mp.msg.error(cmd .. " package not found! please install it.")
-    end
-
     return exists
 end
 
+-- reference for io.popen:
+-- https://pubs.opengroup.org/onlinepubs/009695399/functions/popen.html
 local function display_servers(cmd)
-    local pipe = io.popen("echo $XDG_SESSION_TYPE")
+    local pipe = io.popen("echo $XDG_SESSION_TYPE", "r")
     exists = pipe:read() == cmd
     pipe:close()
     return exists
@@ -46,6 +40,7 @@ local function get_clipboard_cmd()
     elseif command_exists("pbcopy") then
         return "pbcopy"
     else
+        mp.msg.error("No supported clipboard command found")
         return false
     end
 end
@@ -89,4 +84,4 @@ if platform == UNIX then
     clipboard_cmd = get_clipboard_cmd()
 end
 
-mp.add_key_binding("Ctrl+c", "copyTime", copyTime)
+mp.add_key_binding("ALT+x", "copyTime", copyTime)
