@@ -20,6 +20,14 @@ local function command_exists(cmd)
     local pipe = io.popen("type " .. cmd .. " > /dev/null 2> /dev/null; printf \"$?\"", "r")
     exists = pipe:read() == "0"
     pipe:close()
+
+    -- show error if command not exists
+    if not exists and cmd == "pbcopy" then
+        mp.msg.error(cmd .. " package not found! please install it (MacOS-only).")
+    elseif not exists then
+        mp.msg.error(cmd .. " package not found! please install it.")
+    end
+
     return exists
 end
 
@@ -84,4 +92,4 @@ if platform == UNIX then
     clipboard_cmd = get_clipboard_cmd()
 end
 
-mp.add_key_binding("ALT+x", "copyTime", copyTime)
+mp.add_key_binding("Ctrl+c", "copyTime", copyTime)
